@@ -27,7 +27,10 @@ Route::prefix('teacher')->group(function () {
         Route::get('list', [AuthController::class, 'teacherList']);
         Route::resource('user',UserController::class);
         Route::resource('activity',ActivityController::class);
+        
         Route::resource('word',WordController::class);
+        Route::post('word/storeWord',[WordController::class,'store']);
+        Route::post('word/update/{id}',[WordController::class,'update']);
     });
     Route::post('register', [AuthController::class, 'registerTeacher']);
     Route::post('verify-otp', [AuthController::class, 'verifyOTPTeacher']);
