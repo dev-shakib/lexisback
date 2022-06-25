@@ -27,11 +27,12 @@ Route::prefix('teacher')->group(function () {
 
 // put all api protected routes here
 Route::middleware('auth:api')->group(function () {
-    // Route::get('user-detail', [AuthController::class, 'userDetail']);
-    //Teacher Activity create panel
+    Route::post('logout', [AuthController::class, 'logout']);
+});
+
+//Teacher Activity create panel
+Route::post('create-word', [WordController::class, 'store']);
     //Teacher Activity test panel
     //Student Activity access panel
     //configuration panel
-    //Word 
-    Route::post('logout', [AuthController::class, 'logout']);
-});
+    //Manage Words 
