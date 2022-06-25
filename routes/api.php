@@ -8,6 +8,7 @@ use App\Http\Controllers\Api\ActivityController;
 use App\Http\Controllers\Api\WordController;
 use App\Http\Controllers\Api\DashboardController;
 use App\Http\Controllers\Api\UserController;
+use App\Http\Controllers\Api\ConfigController;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,10 +28,13 @@ Route::prefix('teacher')->group(function () {
         Route::get('list', [AuthController::class, 'teacherList']);
         Route::resource('user',UserController::class);
         Route::resource('activity',ActivityController::class);
-        
+
         Route::resource('word',WordController::class);
         Route::post('word/storeWord',[WordController::class,'store']);
         Route::post('word/update/{id}',[WordController::class,'update']);
+        Route::get('getConfig',[ConfigController::class,'index']);
+        Route::get('ConfigList',[ConfigController::class,'ConfigList']);
+        Route::post('updateOrCreateConfig',[ConfigController::class,'updateOrCreateConfig']);
     });
     Route::post('register', [AuthController::class, 'registerTeacher']);
     Route::post('verify-otp', [AuthController::class, 'verifyOTPTeacher']);
@@ -46,6 +50,6 @@ Route::middleware('auth:api')->group(function () {
     //Teacher Activity test panel
     //Student Activity access panel
     //configuration panel
-    //Word 
+    //Word
     Route::post('logout', [AuthController::class, 'logout']);
 });
