@@ -9,6 +9,9 @@ use Illuminate\Support\Facades\Hash;
 use Laravel\Passport\TokenRepository;
 use Laravel\Passport\RefreshTokenRepository;
 use Illuminate\Support\Facades\Mail;
+use Spatie\Permission\Models\Permission;
+use Spatie\Permission\Models\Role;
+use Spatie\Permission\PermissionRegistrar;
 use App\Mail\sendEmail;
 use Carbon\Carbon;
 use Validator;
@@ -80,16 +83,26 @@ class AuthController extends Controller
      * @return json
     */
     public function verifyOTPTeacher(Request $request){
-
+        app()[PermissionRegistrar::class]->forgetCachedPermissions();
         $input = $request->only(['user_id', 'email', 'password', 'otp', 'confirm_otp']);
-
+        
         if($input['otp'] == $input['confirm_otp']){
+            $teacher_role = Role::where(['name'=>'teacher', 'guard_name'=>'api'])->first();
+            $teacher_role->givePermissionTo('create activity');
+            $teacher_role->givePermissionTo('read activity');
+            $teacher_role->givePermissionTo('update activity');
+            $teacher_role->givePermissionTo('delete activity');
+            $teacher_role->givePermissionTo('create word');
+            $teacher_role->givePermissionTo('read word');
+            $teacher_role->givePermissionTo('update word');
+            $teacher_role->givePermissionTo('delete word');
             $user = User::create([
                 'user_id' => $input['user_id'],
                 'email' => $input['email'],
                 'password' => Hash::make($input['password']),
             ]);
-
+            $user->assignRole($teacher_role);
+            
             $accessToken = $user->createToken('authToken')->accessToken;
             return response()->json([
                 'success' => true,
