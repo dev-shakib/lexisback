@@ -29,6 +29,6 @@ class sendEmail extends Mailable
      */
     public function build()
     {
-        return $this->view('mailOTP', $this->details);
+        return $this->view('backend.auth.mailOTP', $this->details);
     }
 }

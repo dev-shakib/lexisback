@@ -5,31 +5,31 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Auth\Events\Registered;
-use Validator;
-use Exception;
-use Log;
 use Illuminate\Support\Facades\Hash;
 use Laravel\Passport\TokenRepository;
 use Laravel\Passport\RefreshTokenRepository;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\sendEmail;
+use Carbon\Carbon;
+use Validator;
+use Exception;
+use Log;
 
 class AuthController extends Controller
 {
     /**
-     * Register user.
+     * Attemp to Register user.
      *
      * @return json
      */
-    public function register(Request $request)
-    {
+    public function register(Request $request){
 
-        $input = $request->only(['userId', 'email', 'password']);
+        $input = $request->only(['user_id', 'email', 'password']);
 
         $validate_data = [
-            'userId' => 'required|string|min:3',
+            'user_id' => 'required|string|min:3',
             'email' => 'required|email',
-            'password' => 'required|min:8',
+            'password' => 'required|min:6|max:20',
         ];
 
         $validator = Validator::make($input, $validate_data);
@@ -42,29 +42,20 @@ class AuthController extends Controller
             ]);
         }
 
-        // $user = User::create([
-        //     'name' => $input['name'],
-        //     'email' => $input['email'],
-        //     'password' => Hash::make($input['password'])
-        // ]);
-
-
-        // event(new Registered($user));
-
-        // return response(['user' => $user, 'access_token' => $accessToken]);
-
         return $this->sendOTP($input);
 
     }
 
-
-    public function sendOTP($userData)
-    {
+    /**
+     * Register send OTP to email.
+     *
+     * @return json
+     */
+    public function sendOTP($userData){
+        
         $otp = rand(1000,9999);
         Log::info("otp = ".$otp);
-        // $user = User::where('email','=',$userData->email)->update(['otp' => $otp]);
 
-        // if($user){
             $mail_details = [
                 'subject' => 'Lexismat - OTP Verification',
                 'body' => 'Your OTP is : '. $otp
@@ -72,9 +63,8 @@ class AuthController extends Controller
         
             \Mail::to($userData['email'])->send(new sendEmail($mail_details));
 
-            // $accessToken = $user->createToken('authToken')->accessToken;
             $data = [
-                'userId' => $userData['userId'],
+                'user_id' => $userData['user_id'],
                 'email' => $userData['email'],
                 'password' => Hash::make($userData['password']),
                 'otp' => $otp,
@@ -83,11 +73,36 @@ class AuthController extends Controller
             ];
         
             return response()->json($data);
+    }
 
-        // }
-        // else{
-        //     return response(["status" => 401, 'message' => 'Invalid']);
-        // }
+    /**
+     * Verify OTP and Register user.
+     *
+     * @return json
+     */
+    public function verifyOTP(Request $request){
+
+        $input = $request->only(['user_id', 'email', 'password', 'otp', 'confirm_otp']);
+
+        if($input['otp'] == $input['confirm_otp']){
+            $user = User::create([
+                'user_id' => $input['user_id'],
+                'email' => $input['email'],
+                'password' => Hash::make($input['password']),
+            ]);
+
+            $accessToken = $user->createToken('authToken')->accessToken;
+            return response()->json([
+                'success' => true,
+                'message' => 'User Created Successfully',
+                'access_token' => $accessToken
+            ], 201);
+        }else{
+            return response()->json([
+                'success' => false,
+                'message' => 'The OTP entered is incorrect.'
+            ], 200);
+        }
     }
 
     /**
@@ -97,11 +112,11 @@ class AuthController extends Controller
      */
     public function login(Request $request)
     {
-        $input = $request->only(['email', 'password']);
+        $input = $request->only(['user_id', 'password']);
 
         $validate_data = [
-            'email' => 'required|email',
-            'password' => 'required|min:8',
+            'user_id' => 'required|string|min:3',
+            'password' => 'required|min:6',
         ];
 
         $validator = Validator::make($input, $validate_data);
@@ -126,7 +141,7 @@ class AuthController extends Controller
         } else {
             return response()->json([
                 'success' => false,
-                'message' => 'User authentication failed.'
+                'message' => 'User authentication failed.',
             ], 401);
         }
     }

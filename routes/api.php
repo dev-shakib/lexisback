@@ -23,8 +23,8 @@ use App\Http\Controllers\VerifyEmailController;
 Route::post('register', [AuthController::class, 'register']);
 Route::post('login', [AuthController::class, 'login']);
 
-//Send OTP
-Route::any('sendOTP', 'API\AuthController@requestOtp');
+//verify OTP
+Route::post('verify-otp', [AuthController::class, 'verifyOTP']);
 
 // // Verify email
 // Route::get('/email/verify/{id}/{hash}', [VerifyEmailController::class, '__invoke'])
@@ -39,7 +39,7 @@ Route::any('sendOTP', 'API\AuthController@requestOtp');
 
 // put all api protected routes here
 Route::middleware('auth:api')->group(function () {
-    Route::post('user-detail', [AuthController::class, 'userDetail']);
+    Route::get('user-detail', [AuthController::class, 'userDetail']);
     Route::post('logout', [AuthController::class, 'logout']);
 });
 
