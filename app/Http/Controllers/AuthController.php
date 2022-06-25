@@ -22,7 +22,7 @@ class AuthController extends Controller
      *
      * @return json
     */
-    public function register(Request $request){
+    public function registerTeacher(Request $request){
 
         $input = $request->only(['user_id', 'email', 'password']);
 
@@ -42,7 +42,7 @@ class AuthController extends Controller
             ]);
         }
 
-        return $this->sendOTP($input);
+        return $this->sendOTPTeacher($input);
     }
 
     /**
@@ -50,7 +50,7 @@ class AuthController extends Controller
      *
      * @return json
     */
-    public function sendOTP($userData){
+    public function sendOTPTeacher($userData){
         
         $otp = rand(1000,9999);
         Log::info("otp = ".$otp);
@@ -79,7 +79,7 @@ class AuthController extends Controller
      *
      * @return json
     */
-    public function verifyOTP(Request $request){
+    public function verifyOTPTeacher(Request $request){
 
         $input = $request->only(['user_id', 'email', 'password', 'otp', 'confirm_otp']);
 
@@ -106,11 +106,23 @@ class AuthController extends Controller
     }
 
     /**
+     * Teacher List.
+     *
+     * @return json
+    */
+    public function teacherList(){
+
+        $teachers = User::get();
+
+        return response()->json($teachers);
+    }
+
+    /**
      * Login user.
      *
      * @return json
     */
-    public function login(Request $request){
+    public function loginTeacher(Request $request){
 
         $input = $request->only(['user_id', 'password']);
 

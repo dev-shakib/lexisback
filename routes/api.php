@@ -16,11 +16,14 @@ use App\Http\Controllers\VerifyEmailController;
 |
 */
 
-Route::post('register', [AuthController::class, 'register']);
-Route::post('login', [AuthController::class, 'login']);
-
-//verify OTP
-Route::post('verify-otp', [AuthController::class, 'verifyOTP']);
+/* Teacher Panel*/
+Route::prefix('teacher')->group(function () {
+    Route::post('register', [AuthController::class, 'registerTeacher']);
+    Route::post('verify-otp', [AuthController::class, 'verifyOTPTeacher']);
+    Route::post('login', [AuthController::class, 'loginTeacher']);
+    Route::get('list', [AuthController::class, 'teacherList']);
+});
+/* Teacher Panel*/
 
 // put all api protected routes here
 Route::middleware('auth:api')->group(function () {
