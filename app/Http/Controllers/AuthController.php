@@ -21,7 +21,7 @@ class AuthController extends Controller
      * Attemp to Register user.
      *
      * @return json
-     */
+    */
     public function register(Request $request){
 
         $input = $request->only(['user_id', 'email', 'password']);
@@ -43,43 +43,42 @@ class AuthController extends Controller
         }
 
         return $this->sendOTP($input);
-
     }
 
     /**
      * Register send OTP to email.
      *
      * @return json
-     */
+    */
     public function sendOTP($userData){
         
         $otp = rand(1000,9999);
         Log::info("otp = ".$otp);
 
-            $mail_details = [
-                'subject' => 'Lexismat - OTP Verification',
-                'body' => 'Your OTP is : '. $otp
-            ];
+        $mail_details = [
+            'subject' => 'Lexismat - OTP Verification',
+            'body' => 'Your OTP is : '. $otp
+        ];
         
-            \Mail::to($userData['email'])->send(new sendEmail($mail_details));
+        \Mail::to($userData['email'])->send(new sendEmail($mail_details));
 
-            $data = [
-                'user_id' => $userData['user_id'],
-                'email' => $userData['email'],
-                'password' => Hash::make($userData['password']),
-                'otp' => $otp,
-                'status' => 200,
-                'message' => "OTP sent successfully"
-            ];
+        $data = [
+            'user_id' => $userData['user_id'],
+            'email' => $userData['email'],
+            'password' => Hash::make($userData['password']),
+            'otp' => $otp,
+            'status' => 200,
+            'message' => "OTP sent successfully"
+        ];
         
-            return response()->json($data);
+        return response()->json($data);
     }
 
     /**
      * Verify OTP and Register user.
      *
      * @return json
-     */
+    */
     public function verifyOTP(Request $request){
 
         $input = $request->only(['user_id', 'email', 'password', 'otp', 'confirm_otp']);
@@ -97,6 +96,7 @@ class AuthController extends Controller
                 'message' => 'User Created Successfully',
                 'access_token' => $accessToken
             ], 201);
+
         }else{
             return response()->json([
                 'success' => false,
@@ -109,9 +109,9 @@ class AuthController extends Controller
      * Login user.
      *
      * @return json
-     */
-    public function login(Request $request)
-    {
+    */
+    public function login(Request $request){
+
         $input = $request->only(['user_id', 'password']);
 
         $validate_data = [
@@ -138,6 +138,7 @@ class AuthController extends Controller
                 'message' => 'User login succesfully, Use token to authenticate.',
                 'token' => $token
             ], 200);
+
         } else {
             return response()->json([
                 'success' => false,
@@ -147,26 +148,12 @@ class AuthController extends Controller
     }
 
     /**
-     * Access method to authenticate.
-     *
-     * @return json
-     */
-    public function userDetail()
-    {
-        return response()->json([
-            'success' => true,
-            'message' => 'Data fetched successfully.',
-            'data' => auth()->user()
-        ], 200);
-    }
-
-    /**
      * Logout user.
      *
      * @return json
      */
-    public function logout()
-    {
+    public function logout(){
+        
         $access_token = auth()->user()->token();
 
         // logout from only current device
