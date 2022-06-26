@@ -45,6 +45,22 @@ class ConfigController extends Controller
 
         }
     }
+    public function destroy($id)
+    {
+        $res=Configs::find($id)->delete();
+        if ($res){
+            $data=[
+                'success'=>true,
+                'msg'=>'successfully deleted'
+            ];
+        }else{
+          $data=[
+            'success'=>false,
+            'msg'=>'failed to deleted'
+            ];
+        }
+        return response()->json($data);
+    }
     public function updateOrCreateConfig(Request $request)
     {
         $config_name = $request->post('config_name');

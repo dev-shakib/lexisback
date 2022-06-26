@@ -35,6 +35,7 @@ Route::prefix('teacher')->group(function () {
         Route::get('default-config',[ConfigController::class,'index']);
         Route::get('config-list',[ConfigController::class,'ConfigList']);
         Route::post('update-or-create-config',[ConfigController::class,'updateOrCreateConfig']);
+        Route::get('config-delete/{id}',[ConfigController::class,'destroy']);
 
         Route::post('logout', [AuthController::class, 'logoutTeacher']);
     });
