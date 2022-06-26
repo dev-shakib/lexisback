@@ -44,16 +44,6 @@ class AuthController extends Controller
                 'errors' => $validator->errors()
             ]);
         }
-
-        return $this->sendOTPTeacher($input);
-    }
-
-    /**
-     * Register send OTP to email.
-     *
-     * @return json
-    */
-    public function sendOTPTeacher($userData){
         
         $otp = rand(1000,9999);
         Log::info("otp = ".$otp);
@@ -63,12 +53,12 @@ class AuthController extends Controller
             'body' => 'Your OTP is : '. $otp
         ];
         
-        \Mail::to($userData['email'])->send(new sendEmail($mail_details));
+        \Mail::to($input['email'])->send(new sendEmail($mail_details));
 
         $data = [
-            'user_id' => $userData['user_id'],
-            'email' => $userData['email'],
-            'password' => Hash::make($userData['password']),
+            'user_id' => $input['user_id'],
+            'email' => $input['email'],
+            'password' => Hash::make($input['password']),
             'otp' => $otp,
             'status' => 200,
             'message' => "OTP sent successfully"
