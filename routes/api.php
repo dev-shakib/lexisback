@@ -30,11 +30,11 @@ Route::prefix('teacher')->group(function () {
         Route::resource('activity',ActivityController::class);
 
         Route::resource('word',WordController::class);
-        Route::post('word/storeWord',[WordController::class,'store']);
+        Route::post('word/create',[WordController::class,'store']);
         Route::post('word/update/{id}',[WordController::class,'update']);
-        Route::get('getConfig',[ConfigController::class,'index']);
-        Route::get('ConfigList',[ConfigController::class,'ConfigList']);
-        Route::post('updateOrCreateConfig',[ConfigController::class,'updateOrCreateConfig']);
+        Route::get('default-config',[ConfigController::class,'index']);
+        Route::get('config-list',[ConfigController::class,'ConfigList']);
+        Route::post('update-or-create-config',[ConfigController::class,'updateOrCreateConfig']);
 
         Route::post('logout', [AuthController::class, 'logoutTeacher']);
     });
