@@ -3,11 +3,11 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\AuthController;
-use App\Http\Controllers\Api\ActivityController;
-use App\Http\Controllers\Api\WordController;
-use App\Http\Controllers\Api\DashboardController;
-use App\Http\Controllers\Api\UserController;
-use App\Http\Controllers\Api\ConfigController;
+use App\Http\Controllers\Teacher\ActivityController;
+use App\Http\Controllers\Teacher\WordController;
+use App\Http\Controllers\Teacher\DashboardController;
+use App\Http\Controllers\Teacher\UserController;
+use App\Http\Controllers\Teacher\ConfigController;
 
 /*
 |--------------------------------------------------------------------------

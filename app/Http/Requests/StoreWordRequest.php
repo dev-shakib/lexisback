@@ -27,8 +27,8 @@ class StoreWordRequest extends FormRequest
     {
         return [
             'name' => 'required',
-            'audioFile'=> 'required',
-            'imageFile' => 'required',
+            'audioFile'=> 'required|mimes:application/octet-stream,audio/mpeg,mpga,mp3,wav|max:4096',
+            'imageFile' => 'required|mimes:jpg,jpeg,png,bmp,tiff |max:4096',
             'graphicsName'=>'required'
         ];
     }
@@ -42,8 +42,8 @@ class StoreWordRequest extends FormRequest
             'imageFile.required' => 'Image File is required'
         ];
     }
-    public function failedValidation(Validator $validator) { 
+    public function failedValidation(Validator $validator) {
         //write your bussiness logic here otherwise it will give same old JSON response
-    throw new HttpResponseException(response()->json($validator->errors(), 422)); 
+    throw new HttpResponseException(response()->json($validator->errors(), 422));
     }
 }
