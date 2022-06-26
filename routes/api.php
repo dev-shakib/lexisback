@@ -4,6 +4,11 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\VerifyEmailController;
+use App\Http\Controllers\Api\ActivityController;
+use App\Http\Controllers\Api\WordController;
+use App\Http\Controllers\Api\DashboardController;
+use App\Http\Controllers\Api\UserController;
+use App\Http\Controllers\Api\ConfigController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,12 +22,25 @@ use App\Http\Controllers\VerifyEmailController;
 */
 
 /* Teacher Panel*/
+
 Route::prefix('teacher')->group(function () {
+    Route::group(['middleware' => ['auth:api','role:teacher']], function () {
+        Route::get('list', [AuthController::class, 'teacherList']);
+        Route::resource('user',UserController::class);
+        Route::resource('activity',ActivityController::class);
+
+        Route::resource('word',WordController::class);
+        Route::post('word/storeWord',[WordController::class,'store']);
+        Route::post('word/update/{id}',[WordController::class,'update']);
+        Route::get('getConfig',[ConfigController::class,'index']);
+        Route::get('ConfigList',[ConfigController::class,'ConfigList']);
+        Route::post('updateOrCreateConfig',[ConfigController::class,'updateOrCreateConfig']);
+    });
     Route::post('register', [AuthController::class, 'registerTeacher']);
     Route::post('verify-otp', [AuthController::class, 'verifyOTPTeacher']);
     Route::post('login', [AuthController::class, 'loginTeacher']);
-    Route::get('list', [AuthController::class, 'teacherList']);
 });
+
 /* Teacher Panel*/
 
 // put all api protected routes here
@@ -30,9 +48,3 @@ Route::middleware('auth:api')->group(function () {
     Route::post('logout', [AuthController::class, 'logout']);
 });
 
-//Teacher Activity create panel
-Route::post('create-word', [WordController::class, 'store']);
-    //Teacher Activity test panel
-    //Student Activity access panel
-    //configuration panel
-    //Manage Words 
