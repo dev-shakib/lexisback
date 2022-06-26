@@ -61,8 +61,6 @@ class WordController extends Controller
         $data['imageFile'] = $this->moveFiles('public/word/image/', request()->file('imageFile'));
         $data['user_id'] = auth()->user()->id;
         try{
-
-
             $word =  Word::where('id',$id)->update($data);
             return response()->json([
                 'succcess'=>true,

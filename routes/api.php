@@ -27,7 +27,7 @@ Route::prefix('teacher')->group(function () {
         // put all api protected routes here
         Route::get('list', [AuthController::class, 'teacherList']);
         Route::resource('user',UserController::class);
-        Route::resource('activity',ActivityController::class);
+        Route::get('activity/{activity_number}',[ActivityController::class,'SingleActivity']);
 
         Route::resource('word',WordController::class);
         Route::post('word/create',[WordController::class,'store']);
