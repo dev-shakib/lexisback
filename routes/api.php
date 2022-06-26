@@ -8,6 +8,8 @@ use App\Http\Controllers\Teacher\WordController;
 use App\Http\Controllers\Teacher\DashboardController;
 use App\Http\Controllers\Teacher\UserController;
 use App\Http\Controllers\Teacher\ConfigController;
+use App\Http\Controllers\Student\StudentAuthController;
+use App\Http\Controllers\Student\StudentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -43,6 +45,12 @@ Route::prefix('teacher')->group(function () {
     Route::post('verify-otp', [AuthController::class, 'verifyOTPTeacher']);
     Route::post('login', [AuthController::class, 'loginTeacher']);
 });
-
+Route::prefix('student')->group(function(){
+    Route::group(['middleware' => ['auth.students', 'auth:api']], function () {
+        Route::get('get-profile-info',[StudentController::class,'profile']);
+    });
+    Route::post('register',[StudentAuthController::class,'register']);
+    Route::post('login',[StudentAuthController::class,'login']);
+});
 /* Teacher Panel*/
 
