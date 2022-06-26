@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Auth;
 
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -83,6 +83,7 @@ class AuthController extends Controller
      * @return json
     */
     public function verifyOTPTeacher(Request $request){
+        
         app()[PermissionRegistrar::class]->forgetCachedPermissions();
         $input = $request->only(['user_id', 'email', 'password', 'otp', 'confirm_otp']);
         
@@ -177,7 +178,7 @@ class AuthController extends Controller
      *
      * @return json
      */
-    public function logout(){
+    public function logoutTeacher(){
         
         $access_token = auth()->user()->token();
 

@@ -2,8 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\AuthController;
-use App\Http\Controllers\VerifyEmailController;
+use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\Api\ActivityController;
 use App\Http\Controllers\Api\WordController;
 use App\Http\Controllers\Api\DashboardController;
@@ -25,6 +24,7 @@ use App\Http\Controllers\Api\ConfigController;
 
 Route::prefix('teacher')->group(function () {
     Route::group(['middleware' => ['auth:api','role:teacher']], function () {
+        // put all api protected routes here
         Route::get('list', [AuthController::class, 'teacherList']);
         Route::resource('user',UserController::class);
         Route::resource('activity',ActivityController::class);
@@ -35,6 +35,8 @@ Route::prefix('teacher')->group(function () {
         Route::get('getConfig',[ConfigController::class,'index']);
         Route::get('ConfigList',[ConfigController::class,'ConfigList']);
         Route::post('updateOrCreateConfig',[ConfigController::class,'updateOrCreateConfig']);
+
+        Route::post('logout', [AuthController::class, 'logoutTeacher']);
     });
     Route::post('register', [AuthController::class, 'registerTeacher']);
     Route::post('verify-otp', [AuthController::class, 'verifyOTPTeacher']);
@@ -42,9 +44,4 @@ Route::prefix('teacher')->group(function () {
 });
 
 /* Teacher Panel*/
-
-// put all api protected routes here
-Route::middleware('auth:api')->group(function () {
-    Route::post('logout', [AuthController::class, 'logout']);
-});
 
