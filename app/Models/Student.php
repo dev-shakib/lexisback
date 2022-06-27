@@ -16,7 +16,7 @@ class Student extends Authenticatable
 
     protected $fillable= ['user_id', 'password','yob','gender','config_id'];
 
-    public function activity(){
+    public function configs(){
         return $this->belongsTo(Configs::class, 'config_id', 'id');
     }
 

@@ -11,9 +11,10 @@ class Word extends Model
     protected $table = 'words';
     protected $fillable =[
         'name' ,
-        'audioFile', 
+        'audioFile',
         'imageFile' ,
         'graphicsName',
         'user_id'
     ];
+
 }
