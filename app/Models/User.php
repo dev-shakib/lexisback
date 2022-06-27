@@ -7,12 +7,13 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Passport\HasApiTokens;
-
+use Laratrust\Traits\LaratrustUserTrait;
 
 class User extends Authenticatable implements MustVerifyEmail
 {
+    use LaratrustUserTrait;
     use HasFactory, Notifiable, HasApiTokens;
-    protected $guard = 'api';
+    // protected $guard = 'api';
     /**
      * The attributes that are mass assignable.
      *

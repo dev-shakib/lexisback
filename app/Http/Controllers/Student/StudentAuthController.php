@@ -12,6 +12,7 @@ use Exception;
 use App\Models\Student;
 use App\Models\Role;
 use App\Models\Permission;
+use Auth;
 class StudentAuthController extends Controller
 {
     public function register(Request $request)
@@ -76,9 +77,9 @@ class StudentAuthController extends Controller
         }
 
         // authentication attempt
-        dd(auth()->guard('students')->attempt($input));
-        if (auth()->guard('students')->attempt($input)) {
-            $token = auth()->guard('students')->user()->createToken('passport_token')->accessToken;
+        if (auth()->guard('student')->attempt($input)) {
+
+            $token = auth()->guard('student')->user()->createToken('student_token')->accessToken;
 
             return response()->json([
                 'success' => true,

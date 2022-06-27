@@ -29,7 +29,6 @@ Route::prefix('teacher')->group(function () {
         // put all api protected routes here
         Route::get('list', [AuthController::class, 'teacherList']);
         Route::resource('user',UserController::class);
-        Route::get('activity/{activity_number}',[ActivityController::class,'SingleActivity']);
 
         Route::resource('word',WordController::class);
         Route::post('word/create',[WordController::class,'store']);
@@ -38,6 +37,7 @@ Route::prefix('teacher')->group(function () {
         Route::get('config-list',[ConfigController::class,'ConfigList']);
         Route::post('update-or-create-config',[ConfigController::class,'updateOrCreateConfig']);
         Route::get('config-delete/{id}',[ConfigController::class,'destroy']);
+        Route::get('activity/{activity_number}',[ActivityController::class,'SingleActivity']);
 
         Route::post('logout', [AuthController::class, 'logoutTeacher']);
     });
@@ -46,7 +46,7 @@ Route::prefix('teacher')->group(function () {
     Route::post('login', [AuthController::class, 'loginTeacher']);
 });
 Route::prefix('student')->group(function(){
-    Route::group(['middleware' => ['auth.students', 'auth:api']], function () {
+    Route::group(['middleware' => ['auth:student','role:student']], function () {
         Route::get('get-profile-info',[StudentController::class,'profile']);
     });
     Route::post('register',[StudentAuthController::class,'register']);

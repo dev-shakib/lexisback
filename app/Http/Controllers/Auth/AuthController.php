@@ -15,7 +15,7 @@ use Carbon\Carbon;
 use Validator;
 use Exception;
 use Log;
-
+use Auth;
 class AuthController extends Controller
 {
     /**
@@ -136,7 +136,9 @@ class AuthController extends Controller
         }
 
         // authentication attempt
-        if (auth()->attempt($input)) {
+        $user = User::where('user_id',$request->user_id)->first();
+        if (Auth::guard('web')->attempt(['user_id' => $user->user_id, 'password' => $request->password])) {
+
             $token = auth()->user()->createToken('passport_token')->accessToken;
 
             return response()->json([
