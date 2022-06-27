@@ -12,9 +12,17 @@ use Exception;
 use App\Models\Student;
 use App\Models\Role;
 use App\Models\Permission;
+use App\Models\Configs;
 use Auth;
 class StudentAuthController extends Controller
 {
+    public function getAllConfig()
+    {
+        return response()->json([
+            'success'=>true,
+            'data'=>Configs::get()
+        ]);
+    }
     public function register(Request $request)
     {
 

@@ -49,6 +49,7 @@ Route::prefix('student')->group(function(){
     Route::group(['middleware' => ['auth:student','role:student']], function () {
         Route::get('get-profile-info',[StudentController::class,'profile']);
     });
+    Route::get('get-all-config',[StudentAuthController::class,'getAllConfig']);
     Route::post('register',[StudentAuthController::class,'register']);
     Route::post('login',[StudentAuthController::class,'login']);
 });
