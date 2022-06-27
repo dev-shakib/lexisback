@@ -12,7 +12,9 @@ class ActivityController extends Controller
     {
         switch($activityNumber){
             case '1':
+
                 $word = Word::select('name','imageFile','audioFile')->where('user_id',auth()->user()->id)->get();
+
                 $datas = [];
                 $i=0;
                 foreach($word as $w)
@@ -25,6 +27,10 @@ class ActivityController extends Controller
                    $datas[$i]['suff'] =  $WordApp;
                    $i++;
                 }
+                return response()->json([
+                    'success'=>true,
+                    'data' => $datas
+                ]);
             case 2:
                 $word = Word::select('name','imageFile','audioFile')->where('user_id',auth()->user()->id)->get();
                 $datas = [];
@@ -36,6 +42,10 @@ class ActivityController extends Controller
                     $datas[$i]['audioFile'] = Storage::url('storage/app/public/word/audio/'.$w['audioFile']);
                    $i++;
                 }
+                return response()->json([
+                    'success'=>true,
+                    'data' => $datas
+                ]);
                 break;
             case 3:
                 $word = Word::select('name','imageFile','audioFile')->where('user_id',auth()->user()->id)->get();
@@ -50,6 +60,10 @@ class ActivityController extends Controller
                     $datas[$i]['sliceWord'] = array_slice($WordApp,  2, -1, true);
                    $i++;
                 }
+                return response()->json([
+                    'success'=>true,
+                    'data' => $datas
+                ]);
                 break;
             case 4:
                 $word = Word::select('name','imageFile','audioFile')->where('user_id',auth()->user()->id)->get();
@@ -66,12 +80,13 @@ class ActivityController extends Controller
                    $datas[$i]['suff'] =  $WordApp;
                    $i++;
                 }
+                return response()->json([
+                    'success'=>true,
+                    'data' => $datas
+                ]);
                 break;
         }
 
-        return response()->json([
-            'success'=>true,
-            'data' => $datas
-        ]);
+
     }
 }

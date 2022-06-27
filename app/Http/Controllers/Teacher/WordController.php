@@ -25,7 +25,7 @@ class WordController extends Controller
         $data['user_id'] = auth()->user()->id;
         try{
 
-            $dup = Word::where('name', $data['name'])->first();
+            $dup = Word::where(['name'=> $data['name'],'user_id'=>auth()->user()->id])->first();
             if (is_null($dup)) {
                 $word =  Word::create($data);
                 return response()->json([
@@ -76,7 +76,7 @@ class WordController extends Controller
     }
     public function destroy($id)
     {
-        $data = Word::find($id)->first();
+        $data = Word::where('id',$id)->first();
         unlink(public_path('storage/word/audio/'.$data->audioFile));
         unlink(public_path('storage/word/image/'.$data->imageFile));
         $res=Word::find($id)->delete();
