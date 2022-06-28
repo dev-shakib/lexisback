@@ -5,7 +5,9 @@ namespace App\Http\Controllers\Student;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Student;
+use App\Models\Word;
 use Auth;
+use Storage;
 class StudentController extends Controller
 {
     public function profile()
