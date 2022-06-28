@@ -137,13 +137,13 @@ class AuthController extends Controller
 
         // authentication attempt
         $user = User::where('user_id',$request->user_id)->first();
-        if (Auth::guard('web')->attempt(['user_id' => $user->user_id, 'password' => $request->password])) {
+        if (Auth::guard('teacher')->attempt(['user_id' => $user->user_id, 'password' => $request->password])) {
 
-            $token = auth()->user()->createToken('passport_token')->accessToken;
+            $token = auth()->guard('teacher')->user()->createToken('passport_token')->accessToken;
 
             return response()->json([
                 'success' => true,
-                'message' => 'User login succesfully, Use token to authenticate.',
+                'message' => 'Teacher login succesfully, Use token to authenticate.',
                 'token' => $token
             ], 200);
 

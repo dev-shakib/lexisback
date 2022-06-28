@@ -87,18 +87,18 @@ class StudentAuthController extends Controller
         // authentication attempt
         if (auth()->guard('student')->attempt($input)) {
 
-            $token = auth()->guard('student')->user()->createToken('student_token')->accessToken;
+            $token = auth()->guard('student')->user()->createToken('passport_token')->accessToken;
 
             return response()->json([
                 'success' => true,
-                'message' => 'User login succesfully, Use token to authenticate.',
+                'message' => 'Student login succesfully, Use token to authenticate.',
                 'token' => $token
             ], 200);
 
         } else {
             return response()->json([
                 'success' => false,
-                'message' => 'User authentication failed.',
+                'message' => 'Student authentication failed.',
             ], 401);
         }
     }

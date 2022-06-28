@@ -25,7 +25,7 @@ use App\Http\Controllers\Student\StudentController;
 /* Teacher Panel*/
 
 Route::prefix('teacher')->group(function () {
-    Route::group(['middleware' => ['auth:api','role:teacher']], function () {
+    Route::group(['middleware' => ['auth:teacher-api','role:teacher']], function () {
         // put all api protected routes here
         Route::get('list', [AuthController::class, 'teacherList']);
         Route::resource('user',UserController::class);
@@ -46,7 +46,7 @@ Route::prefix('teacher')->group(function () {
     Route::post('login', [AuthController::class, 'loginTeacher']);
 });
 Route::prefix('student')->group(function(){
-    Route::group(['middleware' => ['auth:student','role:student']], function () {
+    Route::group(['middleware' => ['auth:student-api','role:student']], function () {
         Route::get('get-profile-info',[StudentController::class,'profile']);
         Route::get('activity/{activity_number}',[StudentController::class,'activity']);
     });

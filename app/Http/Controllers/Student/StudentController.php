@@ -12,7 +12,14 @@ class StudentController extends Controller
     {
         // $student = Student::with('configs')->get();
         $student = Student::with('configs')->where('id',auth()->user()->id)->first();
-        dd($student);
+    //     dd(response()->json([
+    //         'success'=>true,
+    //         'data' => $student
+    //    ]));
+       return response()->json([
+            'success'=>true,
+            'data' => $student
+       ]);
     }
     public function activity($id){
         $student = Student::with('configs')->where('id',auth()->user()->id)->first();
