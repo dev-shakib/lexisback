@@ -20,6 +20,7 @@ import StActivitySecPage from './pages/studentPage/StActivitySecPage';
 import StActivityThirdPage from './pages/studentPage/StActivityThirdPage';
 import StActivityFourPage from './pages/studentPage/StActivityFourPage';
 import './styles/reduction.scss';
+import Otpregfun from './pages/Otpregfun';
 
 
 const ActivityFirstPage = React.lazy(() => import('./pages/ActivityFirstPage'));
@@ -37,12 +38,14 @@ const AboutPage = React.lazy(() => import('./pages/AboutFormPage'));
 // const StActivityFourPage = React.lazy(() => import('pages/studentPage/StActivityFourPage'));
 
 const getBasename = () => {
-  return `/${process.env.PUBLIC_URL.split('/').pop()}`;
+  return `/${'localhost:8000'}`;
 };
+console.log('this is pub url', getBasename())
 
 class Apps extends React.Component {
   render() {
     return (
+        <>
       <BrowserRouter basename={getBasename()}>
         <GAListener>
           <Switch>
@@ -92,7 +95,8 @@ class Apps extends React.Component {
               path="/otpregform"
               layout={EmptyLayout}
               component={props => (
-                <OtpRegFormPage {...props}  />
+                // <OtpRegFormPage {...props}  />
+                <Otpregfun {...props}/>
               )}
             />
             <LayoutRoute
@@ -186,6 +190,7 @@ class Apps extends React.Component {
           </Switch>
         </GAListener>
       </BrowserRouter>
+        </>
     );
   }
 }

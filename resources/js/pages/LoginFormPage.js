@@ -29,19 +29,44 @@ import Select, { components } from 'react-select';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCaretDown } from '@fortawesome/free-solid-svg-icons';
 import { library } from '@fortawesome/fontawesome-svg-core';
-import arrowImage from '../../components/Pageassets/img/logo/arrowupanddown.png';
+import arrowImage from '../assets/img/logo/arrowupanddown.png';
 import { red } from '@material-ui/core/colors';
+import Api from '../api/api'
 
 class LoginFormPage extends React.Component {
   state = {
+    user_id: null,
     modal: false,
     showPassword: false,
     checkedA: true,
     checkedB: false,
+    password:null,
+
+    persons: [{
+      id:'1',
+      user_id:'farhan'
+    },
+    {
+      id:'2',
+      user_id:'hasnine'
+    },
+  ]
   };
+  componentDidMount() {
+    // Api.get(`https://jsonplaceholder.typicode.com/users`)
+    Api.get(`/teacher/list`)
+      .then(res => {
+        const persons = res.data;
+        this.setState({ persons });
+      })
+      console.log('persons', this.state.persons)
+  }
   handleChange = name => event => {
     this.setState({ ...this.state, [name]: event.target.checked });
   };
+  postLogindata = ()=>{
+    Api.post('/teacher/login', {user_id:this.state.user_id.value, password:this.state.password}).then(res => {console.log(res)})
+  }
   handleClickShowPassword = () => {
     this.setState({ showPassword: !this.state.showPassword });
   };
@@ -68,6 +93,11 @@ class LoginFormPage extends React.Component {
 
   handleLogoClick = () => {
     this.props.history.push('/');
+  };
+  handleOptions = (user_id) => {
+    this.setState({ user_id:user_id }, () =>
+      console.log(`Option selected:`, this.state.user_id)
+    );
   };
 
   render() {
@@ -109,11 +139,26 @@ class LoginFormPage extends React.Component {
       },
       checked: {},
     })(Checkbox);
-    const options = [
+    const optionss = [
       { value: 'SESAT', label: 'SESAT' },
       { value: 'NORA', label: 'NORA' },
       { value: 'MIKE', label: 'MIKE' },
     ];
+
+    // const optionsfun = ()=>{
+    //   this.state.persons.map((i)=>{
+    //     const opt = [{value: i.id, label: i.user_id}]
+    //   })
+    // }
+    const options =  this.state.persons.map((i)=>{
+      return ({value: i.id, label: i.user_id.toUpperCase()})
+    })
+
+    console.log(options)
+    console.log(this.state.user_id)
+    console.log('this is pass',this.state.password)
+
+
     const customStyles = {
       // dropdownIndicator: base => ({
       //   ...base,
@@ -149,11 +194,13 @@ class LoginFormPage extends React.Component {
     const MyComponent = () => (
       <div >
         <Select
+        value={this.state.user_id}
           options={options}
           components={{ DropdownIndicator }}
           placeholder="Select your user id"
           // isClearable={true}
           styles={customStyles}
+          onChange={this.handleOptions}
         />
       </div>
     );
@@ -280,7 +327,9 @@ class LoginFormPage extends React.Component {
           }}
         >
           <div className="d-flex align-items-center">
-            <form action="/act01">
+            <form
+            // action="/act01"
+            >
               <FormGroup style={{ width: '400px' }} className="ml-5">
                 <span
                   style={{
@@ -320,6 +369,7 @@ class LoginFormPage extends React.Component {
                       textAlign: 'center',
                       paddingLeft: 10,
                     }}
+                    onChange={(e)=>this.setState({password:e.target.value})}
                     endAdornment={
                       <InputAdornment position="end">
                         <IconButton
@@ -364,6 +414,7 @@ class LoginFormPage extends React.Component {
                     background: '#1EB972',
                     borderWidth: '0px',
                   }}
+                  onClick={this.postLogindata}
                 >
                   Log in
                 </Button>
@@ -392,6 +443,16 @@ class LoginFormPage extends React.Component {
             Reserved
           </span>
         </Row>
+        <ul>
+        {
+          this.state.persons
+            .map(person =>
+              <li >{person.user_id}</li>
+            )
+        }
+      </ul>
+
+
       </React.Fragment>
     );
   }

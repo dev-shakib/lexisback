@@ -2,7 +2,7 @@ import Page from '../../components/Page';
 import React, { useState } from 'react';
 //import Switch from '@material-ui/core/Switch';
 import './select.scss';
-// import { ReactComponent as TimerIcon } from 'assets/img/activity/timer.svg';
+// import { default as TimerIcon } from '../assets/img/activity/timer.svg';
 import Tab from '@material-ui/core/Tab';
 import Tabs from '@material-ui/core/Tabs';
 import { Button, Col, Row, Input } from 'reactstrap';
