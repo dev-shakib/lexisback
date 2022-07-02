@@ -187,7 +187,7 @@ class LoginFormPage extends React.Component {
     const DropdownIndicator = props => {
       return (
         <components.DropdownIndicator {...props}>
-          <img src={arrowImage} height="30"/>
+          {/* <img src={arrowImage} height="30"/> */}
         </components.DropdownIndicator>
       );
     };
