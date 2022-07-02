@@ -29,7 +29,7 @@ import Select, { components } from 'react-select';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCaretDown } from '@fortawesome/free-solid-svg-icons';
 import { library } from '@fortawesome/fontawesome-svg-core';
-import arrowImage from '../../components/Pageassets/img/logo/arrowupanddown.png';
+// import arrowImage from '../../components/Pageassets/img/logo/arrowupanddown.png';
 import { red } from '@material-ui/core/colors';
 
 class LoginFormPage extends React.Component {
@@ -142,7 +142,7 @@ class LoginFormPage extends React.Component {
     const DropdownIndicator = props => {
       return (
         <components.DropdownIndicator {...props}>
-          <img src={arrowImage} height="30"/>
+          {/* <img src={arrowImage} height="30"/> */}
         </components.DropdownIndicator>
       );
     };
