@@ -14,7 +14,7 @@ return [
     */
 
     'defaults' => [
-        'guard' => 'web',
+        'guard' => 'api',
         'passwords' => 'users',
     ],
 
@@ -40,10 +40,26 @@ return [
             'driver' => 'session',
             'provider' => 'users',
         ],
- 
+        'teacher' => [
+            'driver' => 'session',
+            'provider' => 'users',
+        ],
+        'student' => [
+            'driver' => 'session',
+            'provider' => 'student',
+        ],
+
         'api' => [
             'driver' => 'passport',
             'provider' => 'users',
+        ],
+        'teacher-api' => [
+            'driver' => 'passport',
+            'provider' => 'users',
+        ],
+        'student-api' => [
+            'driver' => 'passport',
+            'provider' => 'student',
         ],
     ],
 
@@ -68,6 +84,10 @@ return [
         'users' => [
             'driver' => 'eloquent',
             'model' => App\Models\User::class,
+        ],
+        'student' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Student::class,
         ],
 
         // 'users' => [
