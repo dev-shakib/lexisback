@@ -20,29 +20,32 @@ import StActivitySecPage from './pages/studentPage/StActivitySecPage';
 import StActivityThirdPage from './pages/studentPage/StActivityThirdPage';
 import StActivityFourPage from './pages/studentPage/StActivityFourPage';
 import './styles/reduction.scss';
+import Otpregfun from './pages/Otpregfun';
 
 
-const ActivityFirstPage = React.lazy(() => import('./pages/ActivityFirstPage'));
-const ActivitySecPage = React.lazy(() => import('./pages/ActivitySecPage'));
-const ActivityThirdPage = React.lazy(() => import('./pages/ActivityThirdPage'));
-const ActivityFourPage = React.lazy(() => import('./pages/ActivityFourPage'));
-const ConfigurationPage = React.lazy(() => import('./pages/ConfigurationPage'));
-const MwPage = React.lazy(() => import('./pages/MwFormPage'));
-const ReportPage = React.lazy(() => import('./pages/ReportFormPage'));
-const AboutPage = React.lazy(() => import('./pages/AboutFormPage'));
-// const StMenuPage = React.lazy(() => import('pages/studentPage/StMenuPage'));
-// const StActivityFirstPage = React.lazy(() => import('pages/studentPage/StActivityFirstPage'));
-// const StActivitySecPage = React.lazy(() => import('pages/studentPage/StActivitySecPage'));
-// const StActivityThirdPage = React.lazy(() => import('pages/studentPage/StActivityThirdPage'));
-// const StActivityFourPage = React.lazy(() => import('pages/studentPage/StActivityFourPage'));
+// const ActivityFirstPage = React.lazy(() => import('./pages/ActivityFirstPage'));
+// const ActivitySecPage = React.lazy(() => import('./pages/ActivitySecPage'));
+// const ActivityThirdPage = React.lazy(() => import('./pages/ActivityThirdPage'));
+// const ActivityFourPage = React.lazy(() => import('./pages/ActivityFourPage'));
+// const ConfigurationPage = React.lazy(() => import('./pages/ConfigurationPage'));
+// const MwPage = React.lazy(() => import('./pages/MwFormPage'));
+// const ReportPage = React.lazy(() => import('./pages/ReportFormPage'));
+// const AboutPage = React.lazy(() => import('./pages/AboutFormPage'));
+// // const StMenuPage = React.lazy(() => import('pages/studentPage/StMenuPage'));
+// // const StActivityFirstPage = React.lazy(() => import('pages/studentPage/StActivityFirstPage'));
+// // const StActivitySecPage = React.lazy(() => import('pages/studentPage/StActivitySecPage'));
+// // const StActivityThirdPage = React.lazy(() => import('pages/studentPage/StActivityThirdPage'));
+// // const StActivityFourPage = React.lazy(() => import('pages/studentPage/StActivityFourPage'));
 
 const getBasename = () => {
-  return `/${process.env.PUBLIC_URL.split('/').pop()}`;
+  return `/${'localhost:8000'}`;
 };
+console.log('this is pub url', getBasename())
 
 class Apps extends React.Component {
   render() {
     return (
+        <>
       <BrowserRouter basename={getBasename()}>
         <GAListener>
           <Switch>
@@ -92,7 +95,8 @@ class Apps extends React.Component {
               path="/otpregform"
               layout={EmptyLayout}
               component={props => (
-                <OtpRegFormPage {...props}  />
+                // <OtpRegFormPage {...props}  />
+                <Otpregfun {...props}/>
               )}
             />
             <LayoutRoute
@@ -186,32 +190,9 @@ class Apps extends React.Component {
           </Switch>
         </GAListener>
       </BrowserRouter>
+        </>
     );
   }
 }
 
-const query = ({ width }) => {
-  if (width < 575) {
-    return { breakpoint: 'xs' };
-  }
-
-  if (576 < width && width < 767) {
-    return { breakpoint: 'sm' };
-  }
-
-  if (768 < width && width < 991) {
-    return { breakpoint: 'md' };
-  }
-
-  if (992 < width && width < 1199) {
-    return { breakpoint: 'lg' };
-  }
-
-  if (width > 1200) {
-    return { breakpoint: 'xl' };
-  }
-
-  return { breakpoint: 'xs' };
-};
-
-export default componentQueries(query)(Apps);
+export default App

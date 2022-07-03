@@ -27,7 +27,7 @@ use App\Http\Controllers\Student\StudentController;
 Route::prefix('teacher')->group(function () {
     Route::group(['middleware' => ['auth:teacher-api','role:teacher']], function () {
         // put all api protected routes here
-        Route::get('list', [AuthController::class, 'teacherList']);
+        
         Route::resource('user',UserController::class);
 
         Route::resource('word',WordController::class);
@@ -44,6 +44,7 @@ Route::prefix('teacher')->group(function () {
     Route::post('register', [AuthController::class, 'registerTeacher']);
     Route::post('verify-otp', [AuthController::class, 'verifyOTPTeacher']);
     Route::post('login', [AuthController::class, 'loginTeacher']);
+    Route::get('list', [AuthController::class, 'teacherList']);
 });
 Route::prefix('student')->group(function(){
     Route::group(['middleware' => ['auth:student-api','role:student']], function () {

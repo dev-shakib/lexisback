@@ -1,7 +1,7 @@
 import AuthForm, { STATE_LOGIN } from '../../components/AuthForm';
 import React from 'react';
 import lexlogoImage from '../../assets/img/logo/lexlogo.png';
-import { ReactComponent as ArrowrightIcon } from '../../assets/img/logo/rightarrow.svg';
+import { default as ArrowrightIcon } from '../../assets/img/logo/rightarrow.svg';
 import {
   Media,
   Card,

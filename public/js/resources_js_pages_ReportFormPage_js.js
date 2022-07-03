@@ -36,7 +36,7 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
  //import Switch from '@material-ui/core/Switch';
 
- // import { ReactComponent as TimerIcon } from 'assets/img/activity/timer.svg';
+ // import { default as TimerIcon } from '../assets/img/activity/timer.svg';
 
 
 

@@ -221,7 +221,7 @@ var ActivitySecPage = function ActivitySecPage() {
                 background: 'rgba(255, 255, 255, 0.08)',
                 borderColor: 'rgba(255, 255, 255, 0.1)'
               },
-              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_16__.jsx)(_assets_img_activity_img_svg__WEBPACK_IMPORTED_MODULE_4__.ReactComponent, {})
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_16__.jsx)(_assets_img_activity_img_svg__WEBPACK_IMPORTED_MODULE_4__["default"], {})
             })
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_16__.jsxs)(reactstrap__WEBPACK_IMPORTED_MODULE_18__["default"], {
             md: 6,
@@ -316,7 +316,7 @@ var ActivitySecPage = function ActivitySecPage() {
                   background: 'rgba(255, 255, 255, 0.08)',
                   borderColor: 'rgba(255, 255, 255, 0.1)'
                 },
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_16__.jsx)(_assets_img_activity_man_svg__WEBPACK_IMPORTED_MODULE_5__.ReactComponent, {})
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_16__.jsx)(_assets_img_activity_man_svg__WEBPACK_IMPORTED_MODULE_5__["default"], {})
               })
             })
           })]
@@ -338,13 +338,13 @@ var ActivitySecPage = function ActivitySecPage() {
                 background: 'rgba(255, 255, 255, 0.08)',
                 borderColor: 'rgba(255, 255, 255, 0.1)'
               },
-              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_16__.jsx)(_assets_img_activity_soundon_svg__WEBPACK_IMPORTED_MODULE_6__.ReactComponent, {})
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_16__.jsx)(_assets_img_activity_soundon_svg__WEBPACK_IMPORTED_MODULE_6__["default"], {})
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_16__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_20__["default"], {
               style: {
                 background: 'rgba(255, 255, 255, 0.08)',
                 borderColor: 'rgba(255, 255, 255, 0.1)'
               },
-              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_16__.jsx)(_assets_img_activity_refresh_svg__WEBPACK_IMPORTED_MODULE_7__.ReactComponent, {})
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_16__.jsx)(_assets_img_activity_refresh_svg__WEBPACK_IMPORTED_MODULE_7__["default"], {})
             })]
           }), !correctA ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_16__.jsx)("div", {
             className: "mr-5",
@@ -380,13 +380,13 @@ var ActivitySecPage = function ActivitySecPage() {
                 background: 'rgba(255, 255, 255, 0.08)',
                 borderColor: 'rgba(255, 255, 255, 0.1)'
               },
-              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_16__.jsx)(_assets_img_activity_magplus_svg__WEBPACK_IMPORTED_MODULE_8__.ReactComponent, {})
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_16__.jsx)(_assets_img_activity_magplus_svg__WEBPACK_IMPORTED_MODULE_8__["default"], {})
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_16__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_20__["default"], {
               style: {
                 background: 'rgba(255, 255, 255, 0.08)',
                 borderColor: 'rgba(255, 255, 255, 0.1)'
               },
-              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_16__.jsx)(_assets_img_activity_magminus_svg__WEBPACK_IMPORTED_MODULE_9__.ReactComponent, {})
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_16__.jsx)(_assets_img_activity_magminus_svg__WEBPACK_IMPORTED_MODULE_9__["default"], {})
             })]
           })]
         })]
@@ -431,7 +431,7 @@ var ActivitySecPage = function ActivitySecPage() {
                   borderRadius: '0px 3px 3px 0px',
                   borderWidth: '0px'
                 },
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_16__.jsx)(_assets_img_activity_timer_svg__WEBPACK_IMPORTED_MODULE_3__.ReactComponent, {})
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_16__.jsx)(_assets_img_activity_timer_svg__WEBPACK_IMPORTED_MODULE_3__["default"], {})
               }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_16__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_25__["default"], {
                 addonType: "prepend"
               })]
@@ -566,7 +566,7 @@ var ActivitySecPage = function ActivitySecPage() {
                     background: 'rgba(255, 255, 255, 0.08)',
                     borderColor: 'rgba(255, 255, 255, 0.1)'
                   },
-                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_16__.jsx)(_assets_img_activity_pausesound_svg__WEBPACK_IMPORTED_MODULE_10__.ReactComponent, {})
+                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_16__.jsx)(_assets_img_activity_pausesound_svg__WEBPACK_IMPORTED_MODULE_10__["default"], {})
                 })
               }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_16__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_18__["default"], {
                 md: 3,
@@ -577,7 +577,7 @@ var ActivitySecPage = function ActivitySecPage() {
                     background: 'rgba(255, 255, 255, 0.08)',
                     borderColor: 'rgba(255, 255, 255, 0.1)'
                   },
-                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_16__.jsx)(_assets_img_activity_refreshsound_svg__WEBPACK_IMPORTED_MODULE_11__.ReactComponent, {})
+                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_16__.jsx)(_assets_img_activity_refreshsound_svg__WEBPACK_IMPORTED_MODULE_11__["default"], {})
                 })
               }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_16__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_18__["default"], {
                 md: 3,
@@ -588,7 +588,7 @@ var ActivitySecPage = function ActivitySecPage() {
                     background: 'rgba(255, 255, 255, 0.08)',
                     borderColor: 'rgba(255, 255, 255, 0.1)'
                   },
-                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_16__.jsx)(_assets_img_activity_aboutsound_svg__WEBPACK_IMPORTED_MODULE_12__.ReactComponent, {})
+                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_16__.jsx)(_assets_img_activity_aboutsound_svg__WEBPACK_IMPORTED_MODULE_12__["default"], {})
                 })
               }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_16__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_18__["default"], {
                 md: 3,
@@ -599,7 +599,7 @@ var ActivitySecPage = function ActivitySecPage() {
                     background: 'rgba(255, 255, 255, 0.08)',
                     borderColor: 'rgba(255, 255, 255, 0.1)'
                   },
-                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_16__.jsx)(_assets_img_activity_flagsound_svg__WEBPACK_IMPORTED_MODULE_13__.ReactComponent, {})
+                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_16__.jsx)(_assets_img_activity_flagsound_svg__WEBPACK_IMPORTED_MODULE_13__["default"], {})
                 })
               })]
             })]

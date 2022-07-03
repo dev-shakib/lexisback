@@ -5,7 +5,7 @@ import { Switch } from 'evergreen-ui';
 import arrowImage from '../../assets/img/logo/arrowupanddown.png';
 import Select, { components } from 'react-select';
 import './select.scss'
-// import { ReactComponent as TimerIcon } from 'assets/img/activity/timer.svg';
+// import { default as TimerIcon } from '../assets/img/activity/timer.svg';
 import {
   Button,
   Card,

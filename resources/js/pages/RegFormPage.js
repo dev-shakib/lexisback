@@ -1,5 +1,6 @@
 import AuthForm, { STATE_LOGIN } from '../components/AuthForm';
-import React, { useState } from 'react';
+import Api from '../api/api'
+import React, { useState,createContext, useEffect } from 'react';
 import {
   Media,
   Card,
@@ -30,46 +31,95 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCaretDown } from '@fortawesome/free-solid-svg-icons';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import arrowImage from '../assets/img/logo/arrowupanddown.png';
+import { Link, Redirect, withRouter } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { otpdatas } from '../redux/action/Actions';
 
-class LoginFormPage extends React.Component {
-  state = {
-    modal: false,
-    showPassword: false,
-    checkedA: true,
-    checkedB: false,
+const LoginFormPage = () => {
+  const Name = createContext();
+  const [modal,setModal] = useState(false);
+  const [showPassword,setShowPassword] = useState(false);
+  const [checkedA,setCheckedA] = useState(true);
+  const [checkedB,setCheckedB] = useState(false);
+  const [userId,setuserId] = useState();
+  const [dataa,setdata] = useState([]);
+  const [password,setpassword] = useState();
+  const [email,setemail] = useState();
+  // const {http,setToken,setData} = Api();
+  const dispatch = useDispatch();
+  // const history = useHistory();
+
+  // const navigate = useNavigate();
+
+
+
+  const handleClickShowPassword = () => {
+    setShowPassword(!showPassword);
   };
-  handleChange = name => event => {
-    this.setState({ ...this.state, [name]: event.target.checked });
-  };
-  handleClickShowPassword = () => {
-    this.setState({ showPassword: !this.state.showPassword });
-  };
-  handleMouseDownPassword = event => {
+
+  const handleMouseDownPassword = event => {
     event.preventDefault();
   };
-  toggle = modalType => () => {
+  const toggle = modalType => () => {
     if (!modalType) {
-      return this.setState({
-        modal: !this.state.modal,
-      });
+      return setModal(!modal);
     }
-    this.setState({
-      [`modal_${modalType}`]: !this.state[`modal_${modalType}`],
-    });
+
   };
-  handleAuthState = authState => {
-    if (authState === STATE_LOGIN) {
-      this.props.history.push('/login');
-    } else {
-      this.props.history.push('/signup');
-    }
+  const handleChange = name => event => {
+    this.setState({ ...this.state, [name]: event.target.checked });
   };
 
-  handleLogoClick = () => {
-    this.props.history.push('/');
+
+  const handleAuthState = authState => {
+    // if (authState === STATE_LOGIN) {
+    //   this.props.history.push('/login');
+    // } else {
+    //   this.props.history.push('/signup');
+    // }
   };
 
-  render() {
+  const handleLogoClick = () => {
+    // this.props.history.push('/');
+  };
+
+  console.log('this is otp data', dataa)
+
+  const registrationFormHandle = (e) => {
+    e.preventDefault();
+    // http.post('/login',{email:email,password:password,userid:userId}).then((res)=>{
+    //   setToken(res.data.user,res.data.access_token);
+    // })
+
+    Api.post('/teacher/register',{email:email,password:password,user_id:userId}).then((res)=>
+
+
+    {dispatch(otpdatas(res.data))})
+
+
+
+
+
+  }
+//   useEffect(() => {
+//     if(dataa.length !==0)
+//     dispatch(otpdatas(dataa))
+
+// }, [dataa])
+
+
+    const onChangeuserId = event => {
+      setuserId(event.target.value);
+      console.log(userId);
+    }
+    const onChangepassword = event => {
+      setpassword(event.target.value);
+    }
+    const onChangeemail = event => {
+      setemail(event.target.value);
+    }
+
+
     const loginbutton = {
       background: 'rgba(255, 255, 255, 0.05)',
       border: '1.5px solid rgba(255, 255, 255, 0.2)',
@@ -147,7 +197,9 @@ class LoginFormPage extends React.Component {
       </div>
     );
     const top100Films = [{ title: 'aabb' }];
-    return (
+
+    return(
+      <div>
       <React.Fragment>
         <Row
           className="d-flex justify-content-center align-items-center"
@@ -270,7 +322,7 @@ class LoginFormPage extends React.Component {
           }}
         >
           <div className="d-flex align-items-center">
-            <form action="/otpregform">
+            <div >
               <FormGroup style={{ width: '400px' }} className="ml-5">
                 <span
                   style={{
@@ -307,7 +359,7 @@ class LoginFormPage extends React.Component {
                 </div>
                 <div className="mt-3" style={loginbutton}>
                   <Input
-                    type={this.state.showPassword ? 'text' : 'password'}
+                    type={showPassword ? 'text' : 'password'}
                     placeholder={'Password'}
                     style={{
                       width: '395px',
@@ -321,10 +373,10 @@ class LoginFormPage extends React.Component {
                     endAdornment={
                       <InputAdornment position="end">
                         <IconButton
-                          onClick={this.handleClickShowPassword}
-                          onMouseDown={this.handleMouseDownPassword}
+                          onClick={handleClickShowPassword}
+                          onMouseDown={handleMouseDownPassword}
                         >
-                          {this.state.showPassword ? (
+                          {showPassword ? (
                             <Visibility style={{ color: 'grey' }} />
                           ) : (
                             <VisibilityOff style={{ color: 'grey' }} />
@@ -349,8 +401,8 @@ class LoginFormPage extends React.Component {
                   }}
                   control={
                     <CheckboxWithGreenCheck
-                      checked={this.state.checkedA}
-                      onChange={this.handleChange('checkedA')}
+                      checked={checkedA}
+                      onChange={handleChange('checkedA')}
                       value="checkedA"
                       color="primary"
                     />
@@ -368,11 +420,15 @@ class LoginFormPage extends React.Component {
                     borderWidth: '0px',
                     borderRadius:'10px'
                   }}
+                  onClick={registrationFormHandle}
                 >
+                  <Link to='/otpregform'>
                   Get OTP
+                  </Link>
+
                 </Button>
               </FormGroup>
-            </form>
+            </div>
           </div>
         </Row>
         <Row
@@ -397,8 +453,12 @@ class LoginFormPage extends React.Component {
           </span>
         </Row>
       </React.Fragment>
-    );
-  }
+      </div>
+    )
+
 }
+
+
+
 
 export default LoginFormPage;
