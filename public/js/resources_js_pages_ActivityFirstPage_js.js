@@ -467,7 +467,7 @@ var ActivityFirstPage = function ActivityFirstPage() {
                     background: 'rgba(255, 255, 255, 0.08)',
                     border: '1.5px solid rgba(255, 255, 255, 0.1)'
                   },
-                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(_assets_img_activity_img_svg__WEBPACK_IMPORTED_MODULE_4__.ReactComponent, {})
+                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(_assets_img_activity_img_svg__WEBPACK_IMPORTED_MODULE_4__["default"], {})
                 })
               }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_16__["default"], {
                 className: "d-flex justify-content-end align-items-center",
@@ -476,7 +476,7 @@ var ActivityFirstPage = function ActivityFirstPage() {
                     background: 'rgba(255, 255, 255, 0.08)',
                     border: '1.5px solid rgba(255, 255, 255, 0.1)'
                   },
-                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(_assets_img_activity_man_svg__WEBPACK_IMPORTED_MODULE_5__.ReactComponent, {})
+                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(_assets_img_activity_man_svg__WEBPACK_IMPORTED_MODULE_5__["default"], {})
                 })
               })]
             })]
@@ -681,7 +681,7 @@ var ActivityFirstPage = function ActivityFirstPage() {
                   borderRadius: '0px 3px 3px 0px',
                   borderWidth: '0px'
                 },
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(_assets_img_activity_timer_svg__WEBPACK_IMPORTED_MODULE_3__.ReactComponent, {})
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(_assets_img_activity_timer_svg__WEBPACK_IMPORTED_MODULE_3__["default"], {})
               }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_24__["default"], {
                 addonType: "prepend"
               })]

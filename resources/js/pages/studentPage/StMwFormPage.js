@@ -1,11 +1,11 @@
-import Page from '../../components/Page';
+import Page from '../components/Page';
 import React, { useState } from 'react';
 //import Switch from '@material-ui/core/Switch';
 import { Switch } from 'evergreen-ui';
 import arrowImage from '../../assets/img/logo/arrowupanddown.png';
 import Select, { components } from 'react-select';
 import './select.scss';
-// import { ReactComponent as TimerIcon } from 'assets/img/activity/timer.svg';
+// import { default as TimerIcon } from '../assets/img/activity/timer.svg';
 import Paper from '@material-ui/core/Paper';
 import Tab from '@material-ui/core/Tab';
 import Tabs from '@material-ui/core/Tabs';

@@ -2,7 +2,7 @@ import Page from '../../components/Page';
 import React, { useEffect, useState } from 'react';
 //import Switch from '@material-ui/core/Switch';
 import lexlogolgImage from '../../assets/img/logo/lexlogolg.png';
-import SecSplashFormPage from '../SecSplashFormPage';
+import SecSplashFormPage from './SecSplashFormPage';
 
 import {
   Button,

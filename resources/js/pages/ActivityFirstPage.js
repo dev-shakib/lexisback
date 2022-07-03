@@ -4,9 +4,9 @@ import React, { useState } from 'react';
 import { Switch, Textarea } from 'evergreen-ui';
 
 import fireImage from '../assets/img/fire.png';
-import { ReactComponent as TimerIcon } from '../assets/img/activity/timer.svg';
-import { ReactComponent as ImgIcon } from '../assets/img/activity/img.svg';
-import { ReactComponent as ManIcon } from '../assets/img/activity/man.svg';
+import { default  as TimerIcon } from '../assets/img/activity/timer.svg';
+import { default  as ImgIcon } from '../assets/img/activity/img.svg';
+import { default  as ManIcon } from '../assets/img/activity/man.svg';
 import checkedImg from '../assets/img/activity/checked.png';
 import FireWordImage from '../assets/img/words/fireword.png';
 import oppsImage from '../assets/img/activity/opps.png';

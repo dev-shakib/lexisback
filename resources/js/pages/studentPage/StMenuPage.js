@@ -4,9 +4,9 @@ import React, { useState } from 'react';
 import arrowImage from '../../assets/img/logo/arrowupanddown.png';
 import Select, { components } from 'react-select';
 import stplayactImg from '../../assets/img/activity/stplayact.png';
-import { ReactComponent as ArrowrightIcon } from '../../assets/img/logo/rightarrow.svg';
+import { default as ArrowrightIcon } from '../../assets/img/logo/rightarrow.svg';
 // import './select.scss'
-// import { ReactComponent as TimerIcon } from 'assets/img/activity/timer.svg';
+// import { default as TimerIcon } from '../assets/img/activity/timer.svg';
 import {
   Button,
   Card,

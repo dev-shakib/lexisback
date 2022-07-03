@@ -3,17 +3,17 @@ import Page from '../../components/Page';
 
 import React, { useState } from 'react';
 import { Switch } from 'evergreen-ui';
-import { ReactComponent as TimerIcon } from '../../assets/img/activity/timer.svg';
-import { ReactComponent as ImgIcon } from '../../assets/img/activity/img.svg';
-import { ReactComponent as ManIcon } from '../../assets/img/activity/man.svg';
-import { ReactComponent as SoundOnIcon } from '../../assets/img/activity/soundon.svg';
-import { ReactComponent as RefreshIcon } from '../../assets/img/activity/refresh.svg';
-import { ReactComponent as MagplusIcon } from '../../assets/img/activity/magplus.svg';
-import { ReactComponent as MagminusIcon } from '../../assets/img/activity/magminus.svg';
-import { ReactComponent as PausesoundIcon } from '../../assets/img/activity/pausesound.svg';
-import { ReactComponent as Refreshsound } from '../../assets/img/activity/refreshsound.svg';
-import { ReactComponent as Aboutsound } from '../../assets/img/activity/aboutsound.svg';
-import { ReactComponent as Flagsound } from '../../assets/img/activity/flagsound.svg';
+import { default as TimerIcon } from '../../assets/img/activity/timer.svg';
+import { default as ImgIcon } from '../../assets/img/activity/img.svg';
+import { default as ManIcon } from '../../assets/img/activity/man.svg';
+import { default as SoundOnIcon } from '../../assets/img/activity/soundon.svg';
+import { default as RefreshIcon } from '../../assets/img/activity/refresh.svg';
+import { default as MagplusIcon } from '../../assets/img/activity/magplus.svg';
+import { default as MagminusIcon } from '../../assets/img/activity/magminus.svg';
+import { default as PausesoundIcon } from '../../assets/img/activity/pausesound.svg';
+import { default as Refreshsound } from '../../assets/img/activity/refreshsound.svg';
+import { default as Aboutsound } from '../../assets/img/activity/aboutsound.svg';
+import { default as Flagsound } from '../../assets/img/activity/flagsound.svg';
 import {
   Button,
   Card,
